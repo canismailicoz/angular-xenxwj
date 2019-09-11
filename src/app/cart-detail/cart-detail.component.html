@@ -1,0 +1,32 @@
+
+<form class="example-form float-right" *ngIf="message == true" >
+  <mat-card >
+    <mat-card-title m-auto>
+       <button (click)="closeDetails()" mat-mini-fab color="warn"> < </button>
+       <button (click)="update_Cart(cartDetail)" class="float-right" mat-flat-button color="warn">Save</button>
+    </mat-card-title>
+  <mat-form-field class="example-full-width">
+    <input [(ngModel)]="fullName" value={{cartDetail.name}} matInput placeholder="Name and Surname" [ngModelOptions]="{standalone: true}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea [(ngModel)]="pos" value={{cartDetail.pos}} matInput placeholder="Position" [ngModelOptions]="{standalone: true}"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea [(ngModel)]="email" value={{cartDetail.email}} matInput placeholder="Email" [ngModelOptions]="{standalone: true}"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea [(ngModel)]="img" value={{cartDetail.img}} matInput placeholder="Img" [ngModelOptions]="{standalone: true}"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea [(ngModel)]="startedAt" value={{cartDetail.startedAt}} matInput placeholder="startedAt" [ngModelOptions]="{standalone: true}"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea [(ngModel)]="Bio" value={{cartDetail.bio}} matInput placeholder="Bio" [ngModelOptions]="{standalone: true}"></textarea>
+  </mat-form-field>
+  </mat-card>
+</form>
