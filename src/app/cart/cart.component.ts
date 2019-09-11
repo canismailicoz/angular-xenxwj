@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
   private detail = false;
 
   private parent: Cart;
+  public ret;
 
   public selectedCart: Cart;
 
@@ -26,7 +27,8 @@ export class CartComponent implements OnInit {
 
   constructor(private cartService: CartService, private http: HttpClient) {
     this.productsObservable = cartService.get_carts();
-    this.productsObservable.subscribe(carts => this.carts = carts )
+    this.productsObservable.subscribe(carts => this.carts = carts.sort((n1,n2) => n1.parent.id - n2.parent.id));
+   
   }
   cardObj: object = {};
 
@@ -76,7 +78,8 @@ export class CartComponent implements OnInit {
   loadPage(){
     this.cartService.
       get_carts()
-      .subscribe(carts => this.carts = carts);
+      .subscribe(carts => this.carts = carts.sort((n1,n2) => n1.parent.id - n2.parent.id));
+      console.log(this.carts)
   }
 
   getParent(parent: Cart){
@@ -95,30 +98,6 @@ export class CartComponent implements OnInit {
     return this.childCarts;*/
   }
 
-  sortCart(toSortCart: Cart[]) {
-
-  return toSortCart.sort((a,b)=>{
-    if(a==b)
-    {
-      return 0;
-    }
-    else
-    {
-      if(a>b)
-      {
-        return 1;
-      }
-      else if(a<b)
-      {
-        return -1;
-      }
-    }
-  }
-  );
-
-  
-
-  }
 
 
 }
